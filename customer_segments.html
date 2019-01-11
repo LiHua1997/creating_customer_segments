@@ -12255,7 +12255,8 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <ul>
-<li>我选择的Grocery，对于区分用户的消费习惯必要性不高，因为几乎各种类型的用户都会购买此项产品，购买量大的，这一项就大，购买量小的这一量就小。</li>
+<li>我选择的Grocery</li>
+<li>预测的得分为0.68，拟合的比较成功，意味着该特征与其它特征关联度较高，一定程度上该特征信息可以从其它特征中得到，相对来说不必要些。</li>
 </ul>
 
 </div>
@@ -13444,6 +13445,7 @@ div#notebook {
 <p><strong>回答:</strong></p>
 <ul>
 <li>154, 65, 66, 75, 128，应该；异常值可能会使结果产生倾斜，影响模型效果。</li>
+<li>GMM算法在进行期望最大化算法时，数据点对某一个聚类的隶属度会影响模型下一步的改变方向，因此异常值会影响模型拟合结果，应当删除</li>
 <li>如果只在一个特征下被看作是异常，可能在其他特征中起到重要作用，因此应排除在多个特征下被看作是异常的点。</li>
 </ul>
 
@@ -14265,7 +14267,6 @@ Sample point 2 predicted to be in Cluster 0
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 
 <span class="c1"># 读取包含聚类结果的数据</span>
-<span class="n">cluster_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;cluster.csv&quot;</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">cluster_data</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">cluster_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Region&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -14318,7 +14319,7 @@ Sample point 2 predicted to be in Cluster 0
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答：</strong></p>
 <ul>
-<li>使用非监督学习对region进行测试，是为了衡量region特征与其他特征间的关联程度，用以考量region特征对于用户分类来说是不是必须的。而将cluster特征加进去后使得分数仅升高了0.02，可看出region特征虽对用户分类结果有影响，但与其他数据关联性较高，且加入cluster后并没有明显的提高分数。因此，region对于划分用户类别帮助不大。</li>
+<li>增加特征后模型的结果显著提高了，可以看出维度的增加对模型训练的结果是有帮助的。</li>
 </ul>
 
 </div>
